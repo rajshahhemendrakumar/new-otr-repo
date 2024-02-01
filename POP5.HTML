@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <div id="cookie-banner" class="cookie-banner">
+    <p>This website uses cookies. By continuing to use this site, you accept our use of cookies. <a href="index.html" id="accept-cookies">Accept Cookies</a></p>
+  </div>
+
+  <!-- Rest of your website content goes here -->
+
+</body>
+</html>
+
+
+<STYLE>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .cookie-banner {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+  }
+  
+  .cookie-banner p {
+    margin: 0;
+  }
+  
+  .cookie-banner a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  </STYLE>
+
+
+<SCRIPT>
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var cookieBanner = document.getElementById('cookie-banner');
+  var acceptCookiesButton = document.getElementById('accept-cookies');
+
+  // Check if the user has previously accepted cookies
+  if (!getCookie('cookiesAccepted')) {
+    // Show the cookie banner if cookies are not accepted
+    cookieBanner.style.display = 'block';
+  }
+
+  // Event listener for the "Accept Cookies" button
+  acceptCookiesButton.addEventListener('click', function () {
+    // Set a cookie to remember that the user has accepted cookies
+    setCookie('cookiesAccepted', 'true', 365);
+
+    // Hide the cookie banner
+    cookieBanner.style.display = 'none';
+  });
+
+  // Function to set a cookie
+  function setCookie(name, value, days) {
+    var expires = '';
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = '; expires=' + date.toUTCString();
+    }
+    document.cookie = name + '=' + value + expires + '; path=/';
+  }
+
+  // Function to get the value of a cookie
+  function getCookie(name) {
+    var nameEQ = name + '=';
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      while (cookie.charAt(0) === ' ') {
+        cookie = cookie.substring(1, cookie.length);
+      }
+      if (cookie.indexOf(nameEQ) === 0) {
+        return cookie.substring(nameEQ.length, cookie.length);
+      }
+    }
+    return null;
+  }
+});
+
+</SCRIPT>
+  

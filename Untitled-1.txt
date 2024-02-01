@@ -1,0 +1,48 @@
+*<?php
+	require ("./db/conn.php");
+	session_start();
+
+	if(isset($_SESSION['uidorPhone'])){
+		header('Location: user.php');
+	}
+
+	if (isset($_POST['uidorPhone']) && isset($_POST['password'])){
+		$uidorPhone = stripslashes($_POST['uidorPhone']);
+		$uidorPhone = mysqli_real_escape_string($conn,$uidorPhone); 
+		$password = stripslashes($_POST['password']);
+		$password = mysqli_real_escape_string($conn,$password);
+		$password = md5($password);
+
+		$query = "SELECT * FROM `users` WHERE password='$password' AND uid='$uidorPhone' OR phone='$uidorPhone'";
+		$result = mysqli_query($conn, $query) or die(mysql_error());
+		$rows = mysqli_num_rows($result);
+
+		if ($rows == 1){
+			$_SESSION['uidorPhone'] = $uidorPhone;
+
+			header("Location: user.php");
+		}
+	}
+?> 
+
+
+<?php
+	require ("./db/conn.php");
+	require ("./phpqrcode/qrlib.php");
+	session_start();
+
+	if (!file_exists('temp/')) {
+    mkdir('temp/', 0777, true);
+	}
+
+	$id = $_GET['id'];
+	$sql = "SELECT * FROM ticketgeneration WHERE barcode='$id'";
+	$result = $conn->query($sql);
+
+
+	if($result-> num_rows > 0){
+		$path = 'temp/';
+		$file = $path.$id.'.png';
+		QRcode::png($id, $file, 'L', 10, 2);
+	}
+?>
