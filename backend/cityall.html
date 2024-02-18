@@ -1,0 +1,108 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Dropdown</title>
+</head>
+<body>
+
+<select id="cityDropdown">
+    <option value="">Select a city</option>
+</select>
+
+<script>
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Your JSON data
+//     var jsonData = [
+//         {
+//             "id": "1",
+//             "name": "Mumbai",
+//             "state": "Maharashtra"
+//         },
+//         {
+//             "id": "2",
+//             "name": "Delhi",
+//             "state": "Delhi"
+//         },
+//         {
+//             "id": "3",
+//             "name": "Bengaluru",
+//             "state": "Karnataka"
+//         }
+//     ];
+
+//     var dropdown = document.getElementById("cityDropdown");
+
+//     // Populate dropdown with options
+//     jsonData.forEach(function(city) {
+//         var option = document.createElement("option");
+//         option.text = city.name;
+//         option.value = city.id;
+//         dropdown.appendChild(option);
+//     });
+// });
+document.addEventListener("DOMContentLoaded", function() {
+    var dropdown = document.getElementById("cityDropdown");
+
+    // Fetch JSON data from file
+    fetch("city.json")
+        .then(response => response.json())
+        .then(jsonData => {
+            // Populate dropdown with options
+            jsonData.forEach(function(city) {
+                var option = document.createElement("option");
+                option.text = city.name;
+                option.value = city.id;
+                dropdown.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching JSON:", error);
+        });
+});
+
+</script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Searchable City Dropdown</title>
+<!-- for searchable dropdown -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+<!-- id citydropdown -->
+<select id="cityDropdown"  style="width: 200px;">
+    <option value="">Select a city</option>
+</select>
+<!-- cdn for dropdowmn -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+    // Fetch JSON data from file
+    fetch("city.json")
+        .then(response => response.json())
+        .then(jsonData => {
+            // Populate dropdown with options
+            jsonData.forEach(function(city) {
+                $('#cityDropdown').append('<option value="' + city.id + '">' + city.name + '</option>');
+            });
+
+            // Initialize Select2 for searchable dropdown
+            $('#cityDropdown').select2();
+        })
+        .catch(error => {
+            console.error("Error fetching JSON:", error);
+        });
+});
+
+</script>
+
+</body>
+</html>

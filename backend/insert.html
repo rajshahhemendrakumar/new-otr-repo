@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("resform");
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                var name = document.getElementById("u_name").value;
+                var surname = document.getElementById("sur_name").value;
+                    //select query
+                    //const  fromdata= new FromData(this); 
+                fetch("http://127.0.0.1:5000/insert-data", {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json, text/plain',
+                        "Content-Type": "application/json",
+                         },
+                    body: JSON.stringify({
+                        namek: name,
+                        //cityk: city,
+                        surnamek: surname
+                    })
+                })
+              
+                .then((response) => {
+                    console.log('response kkkkk', response);
+                    // Handle response if needed
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form id="resform">
+        name : <input type="text" id="u_name">
+        surname : <input type="text" id="sur_name">
+        <button type="submit">click me</button>
+    </form>
+</body>
+
+</html>

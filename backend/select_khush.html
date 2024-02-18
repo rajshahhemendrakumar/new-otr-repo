@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="bus-list"></div>
+    <div id="output"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("resform");
+        form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("u_name").value;
+        fetch('http://127.0.0.1:5000/select_frist', {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json, text/plain',
+                        "Content-Type": "application/json",
+                    },
+
+                    body: JSON.stringify({
+                        namek: name,
+                    })
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // document.getElementById('output').textContent = JSON.stringify(data.data);
+
+                        var arr = data.data;
+                        console.log(arr);
+
+                        var html = "<table border='1|1'>"
+                        for (var i = 0; i < arr.length; i++) {
+                            html += '<tr>';
+                            html += '<td>' + arr[i].id + '</td>';
+                            html += '<td>' + arr[i].name + '</td>';
+
+                            html += '</tr>';
+                        }
+                        html += '</table>';
+                        document.getElementById("bus-list").innerHTML = html;
+                    })
+                    .catch(error => {
+                        document.getElementById('output').textContent = 'Error fetching data. Please try again later.';
+                    });
+                });
+        });
+    </script>
+    <form id="resform" method="post">
+        name : <input type="text" id="u_name">
+        <button type="submit">click me</button>
+    </form>
+</body>
+
+</html>
