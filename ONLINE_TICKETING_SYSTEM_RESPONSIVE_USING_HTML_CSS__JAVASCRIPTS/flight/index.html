@@ -1,41 +1,43 @@
 <html>
 
 <nav>
-    <div class="wrapper">
-      <div class=""><img src="logo1.jpeg"height="50"></img></div>
-      <input type="radio" name="slider" id="menu-btn">
-      <input type="radio" name="slider" id="close-btn">
-      <ul class="nav-links">
-        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
-        
-         
-       
-        <li>
-            <a href="login.html">Admin Login</a></li>
+  <div class="wrapper">
+    <div class=""><img src="logo1.jpeg" height="50"></img></div>
+    <input type="radio" name="slider" id="menu-btn">
+    <input type="radio" name="slider" id="close-btn">
+    <ul class="nav-links">
+      <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
 
 
-      </ul>
-      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
-    </div>
-  </nav>
-  
-  
+
+      <li>
+        <a href="login.html">Admin Login</a>
+      </li>
+
+
+    </ul>
+    <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+  </div>
+</nav>
+
+
 <style>
-
-  *{
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
   }
-  nav{
+
+  nav {
     position: fixed;
     z-index: 99;
     width: 100%;
-    
+
     background: #b2a40b;
   }
-  nav .wrapper{
+
+  nav .wrapper {
     position: relative;
     max-width: 1300px;
     padding: 0px 30px;
@@ -46,19 +48,23 @@
     align-items: center;
     justify-content: space-between;
   }
-  .wrapper .logo a{
+
+  .wrapper .logo a {
     color: #f2f2f2;
     font-size: 30px;
     font-weight: 600;
     text-decoration: none;
   }
-  .wrapper .nav-links{
+
+  .wrapper .nav-links {
     display: inline-flex;
   }
-  .nav-links li{
+
+  .nav-links li {
     list-style: none;
   }
-  .nav-links li a{
+
+  .nav-links li a {
     color: #f2f2f2;
     text-decoration: none;
     font-size: 18px;
@@ -67,13 +73,16 @@
     border-radius: 5px;
     transition: all 0.3s ease;
   }
-  .nav-links li a:hover{
+
+  .nav-links li a:hover {
     background: #3A3B3C;
   }
-  .nav-links .mobile-item{
+
+  .nav-links .mobile-item {
     display: none;
   }
-  .nav-links .drop-menu{
+
+  .nav-links .drop-menu {
     position: absolute;
     background: #242526;
     width: 180px;
@@ -81,23 +90,26 @@
     top: 85px;
     opacity: 0;
     visibility: hidden;
-    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   }
+
   .nav-links li:hover .drop-menu,
-  .nav-links li:hover .mega-box{
+  .nav-links li:hover .mega-box {
     transition: all 0.3s ease;
     top: 70px;
     opacity: 1;
     visibility: visible;
   }
-  .drop-menu li a{
+
+  .drop-menu li a {
     width: 100%;
     display: block;
     padding: 0 0 0 15px;
     font-weight: 400;
     border-radius: 0px;
   }
-  .mega-box{
+
+  .mega-box {
     position: absolute;
     left: 0;
     width: 100%;
@@ -106,62 +118,73 @@
     opacity: 0;
     visibility: hidden;
   }
-  .mega-box .content{
+
+  .mega-box .content {
     background: #242526;
     padding: 25px 20px;
     display: flex;
     width: 100%;
     justify-content: space-between;
-    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
   }
-  .mega-box .content .row{
+
+  .mega-box .content .row {
     width: calc(25% - 30px);
     line-height: 45px;
   }
-  .content .row img{
+
+  .content .row img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  .content .row header{
+
+  .content .row header {
     color: #f2f2f2;
     font-size: 20px;
     font-weight: 500;
   }
-  .content .row .mega-links{
+
+  .content .row .mega-links {
     margin-left: -40px;
-    border-left: 1px solid rgba(255,255,255,0.09);
+    border-left: 1px solid rgba(255, 255, 255, 0.09);
   }
-  .row .mega-links li{
+
+  .row .mega-links li {
     padding: 0 20px;
   }
-  .row .mega-links li a{
+
+  .row .mega-links li a {
     padding: 0px;
     padding: 0 20px;
     color: #d9d9d9;
     font-size: 17px;
     display: block;
   }
-  .row .mega-links li a:hover{
+
+  .row .mega-links li a:hover {
     color: #f2f2f2;
   }
-  .wrapper .btn{
+
+  .wrapper .btn {
     color: #fff;
     font-size: 20px;
     cursor: pointer;
     display: none;
   }
-  .wrapper .btn.close-btn{
+
+  .wrapper .btn.close-btn {
     position: absolute;
     right: 30px;
     top: 10px;
   }
-  
+
   @media screen and (max-width: 970px) {
-    .wrapper .btn{
+    .wrapper .btn {
       display: block;
     }
-    .wrapper .nav-links{
+
+    .wrapper .nav-links {
       position: fixed;
       height: 100vh;
       width: 100%;
@@ -173,37 +196,46 @@
       padding: 50px 10px;
       line-height: 50px;
       overflow-y: auto;
-      box-shadow: 0px 15px 15px rgba(0,0,0,0.18);
+      box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.18);
       transition: all 0.3s ease;
     }
+
     /* custom scroll bar */
     ::-webkit-scrollbar {
       width: 10px;
     }
+
     ::-webkit-scrollbar-track {
       background: #242526;
     }
+
     ::-webkit-scrollbar-thumb {
       background: #3A3B3C;
     }
-    #menu-btn:checked ~ .nav-links{
+
+    #menu-btn:checked~.nav-links {
       left: 0%;
     }
-    #menu-btn:checked ~ .btn.menu-btn{
+
+    #menu-btn:checked~.btn.menu-btn {
       display: none;
     }
-    #close-btn:checked ~ .btn.menu-btn{
+
+    #close-btn:checked~.btn.menu-btn {
       display: block;
     }
-    .nav-links li{
+
+    .nav-links li {
       margin: 15px 10px;
     }
-    .nav-links li a{
+
+    .nav-links li a {
       padding: 0 20px;
       display: block;
       font-size: 20px;
     }
-    .nav-links .drop-menu{
+
+    .nav-links .drop-menu {
       position: static;
       opacity: 1;
       top: 65px;
@@ -215,14 +247,17 @@
       box-shadow: none;
       transition: all 0.3s ease;
     }
-    #showDrop:checked ~ .drop-menu,
-    #showMega:checked ~ .mega-box{
+
+    #showDrop:checked~.drop-menu,
+    #showMega:checked~.mega-box {
       max-height: 100%;
     }
-    .nav-links .desktop-item{
+
+    .nav-links .desktop-item {
       display: none;
     }
-    .nav-links .mobile-item{
+
+    .nav-links .mobile-item {
       display: block;
       color: #f2f2f2;
       font-size: 20px;
@@ -232,17 +267,21 @@
       border-radius: 5px;
       transition: all 0.3s ease;
     }
-    .nav-links .mobile-item:hover{
+
+    .nav-links .mobile-item:hover {
       background: #3A3B3C;
     }
-    .drop-menu li{
+
+    .drop-menu li {
       margin: 0;
     }
-    .drop-menu li a{
+
+    .drop-menu li a {
       border-radius: 5px;
       font-size: 18px;
     }
-    .mega-box{
+
+    .mega-box {
       position: static;
       top: 65px;
       opacity: 1;
@@ -252,36 +291,43 @@
       overflow: hidden;
       transition: all 0.3s ease;
     }
-    .mega-box .content{
+
+    .mega-box .content {
       box-shadow: none;
       flex-direction: column;
       padding: 20px 20px 0 20px;
     }
-    .mega-box .content .row{
+
+    .mega-box .content .row {
       width: 100%;
       margin-bottom: 15px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
+
     .mega-box .content .row:nth-child(1),
-    .mega-box .content .row:nth-child(2){
+    .mega-box .content .row:nth-child(2) {
       border-top: 0px;
     }
-    .content .row .mega-links{
+
+    .content .row .mega-links {
       border-left: 0px;
       padding-left: 15px;
     }
-    .row .mega-links li{
+
+    .row .mega-links li {
       margin: 0;
     }
-    .content .row header{
+
+    .content .row header {
       font-size: 19px;
     }
   }
-  nav input{
+
+  nav input {
     display: none;
   }
-  
-  .body-text{
+
+  .body-text {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -290,13 +336,13 @@
     text-align: center;
     padding: 0 30px;
   }
-  .body-text div{
+
+  .body-text div {
     font-size: 45px;
     font-weight: 600;
   }
-  
-  </style>
-  
+</style>
+
 
 
 
@@ -575,378 +621,389 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<!--
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <!--
 
 Template 2093 Flight
 
 http://www.tooplate.com/view/2093-flight
 
 -->
-    	<title>Flight - Travel and Tour</title>
-    
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <title>Flight - Travel and Tour</title>
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/fontAwesome.css">
-        <link rel="stylesheet" href="css/hero-slider.css">
-        <link rel="stylesheet" href="css/owl-carousel.css">
-        <link rel="stylesheet" href="css/datepicker.css">
-        <link rel="stylesheet" href="css/tooplate-style.css">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/fontAwesome.css">
+  <link rel="stylesheet" href="css/hero-slider.css">
+  <link rel="stylesheet" href="css/owl-carousel.css">
+  <link rel="stylesheet" href="css/datepicker.css">
+  <link rel="stylesheet" href="css/tooplate-style.css">
 
 
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    </head>
+  <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
 
 <body>
 
-    
-     <section class="banner" id="top"> 
-          <Div class="container">  
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="left-side">
-                        
-                        <div class="logo">
 
-                        </div>
-                        
-                        <div class="tabs-content">
-                            <h4>Choose Your Direction:</h4>
-                            <ul class="social-links">
-                                <li><a href="https://www.goibibo.com/trains/rajdhani-express-train-list/">Find us on <em>Facebook</em><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://travelandy.com/new-mumbai-delhi-rajdhani-express-hits-tracks/">Our <em>YouTube</em> Channel<i class="fa fa-youtube"></i></a></li>
-                                <li><a href="https://www.instagram.com/explore/locations/523612137703786/rajdhani-express/">Follow our <em>instagram</em><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="page-direction-button">
-                            <a href="contact.html"><i class="fa fa-phone"></i>Contact Us Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5 col-md-offset-1">
-                    <section id="first-tab-group" class="tabgroup">
-                        <div id="tab1">
-                            <div class="submit-form">
-                                <h4>Check availability for <em>direction</em>:</h4>
-                                <form id="form-submit" action="" method="get">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <label for="from">From:</label>
-                                                <select required name='Select a location...' >
-                                                    <option value="Cambodia">Select a location...</option>
-                                                    <option value="Hong Kong">Ahmedavad</option>
-                                                    <option value="India">Mehsana</option>
-                                                    <option value="Japan">Vadodra</option>
-                                                    <option value="Korea">Kashmir</option>
-                                                    <option value="Laos">Goa</option>
-                                                    <option value="Myanmar">Mumbai</option>
-                                                    <option value="Singapore">kerala</option>
-                                                    <option value="Thailand">Delhi</option>
-                                                    <option value="Vietnam">banglore</option>
-                                                    <option value="Vietnam">Hydrabad</option>
-                                                    <option value="Vietnam">Rajsathan</option>
-                                                    <option value="Vietnam"></option>
+  <section class="banner" id="top">
+    <Div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="left-side">
 
-                                                </select>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <label for="to">To:</label>
-                                                <select required name='to' >
-                                                    <option value="">Select a location...</option>
-                                                    <option value="Cambodia">Cambodia</option>
-                                                    <option value="Hong Kong">Hong Kong</option>
-                                                    <option value="India">India</option>
-                                                    <option value="Japan">Japan</option>
-                                                    <option value="Korea">Korea</option>
-                                                    <option value="Laos">Laos</option>
-                                                    <option value="Myanmar">Myanmar</option>
-                                                    <option value="Singapore">Singapore</option>
-                                                    <option value="Thailand">Thailand</option>
-                                                    <option value="Vietnam">Vietnam</option>
-                                                </select>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <label for="departure">Departure date:</label>
-                                                <input name="deparure" type="text" class="form-control date" id="deparure" placeholder="Select date..." required="">
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <label for="return">Return date:</label>
-                                                <input name="return" type="text" class="form-control date" id="return" placeholder="Select date..." required="" >
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="radio-select">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-sm-6 col-xs-6">
-                                                        <label for="round">Round</label>
-                                                        <input type="radio" name="trip" id="round" value="round" required="required"onchange='this.form.()'>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6 col-xs-6">
-                                                        <label for="oneway">Oneway</label>
-                                                        <input type="radio" name="trip" id="oneway" value="one-way" required="required"onchange='this.form.()'>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                          
-                                            <button type="submit" id="form-submit" class="btn" style="color:black;"><a href="buscmp2.html"> Order Ticket Now</a></button> 
-                                            <button type="submit" id="form-submit" class="btn" style="color:black;"><a href="E:/onlineticketbooking-master/index.html">Back</a></button> 
-                                              
-                                            
-                                          
-                                            <fieldset>
-                                             
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </section>
-                </div>
+            <div class="logo">
+
             </div>
-        </div>
-    </section>
 
-
-
-    
-
-    <section class="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="service-item first-service">
-                        <div class="service-icon"></div>
-                        <h4>Easy Tooplate</h4>
-                        <p>         </a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-item second-service">
-                        <div class="service-icon"></div>
-                        <h4>Unique Ideas</h4>
-                        <p></p></a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-item third-service">
-                        <div class="service-icon"></div>
-                        <h4>Best Support</h4>
-                        <p></p></a>
-                    </div>
-                </div>
+            <div class="tabs-content">
+              <h4>Choose Your Direction:</h4>
+              <ul class="social-links">
+                <li><a href="https://www.goibibo.com/trains/rajdhani-express-train-list/">Find us on <em>Facebook</em><i
+                      class="fa fa-facebook"></i></a></li>
+                <li><a href="https://travelandy.com/new-mumbai-delhi-rajdhani-express-hits-tracks/">Our <em>YouTube</em>
+                    Channel<i class="fa fa-youtube"></i></a></li>
+                <li><a href="https://www.instagram.com/explore/locations/523612137703786/rajdhani-express/">Follow our
+                    <em>instagram</em><i class="fa fa-instagram"></i></a></li>
+              </ul>
             </div>
-        </div>
-    </section>
-
-
-    
-
-
-
-
-    <section id="most-visited">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-heading">
-                        <h2>Most Visited Places</h2>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div id="owl-mostvisited" class="owl-carousel owl-theme">
-                        <div class="item col-md-12">
-                            <div class="visited-item">
-                                <img src="img/images.jpg" alt="">
-                                <div class="text-content">
-                                    <h4>River Views</h4>
-                                    <span>New York</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item col-md-12">
-                            <div class="visited-item">
-                                <img src="img/images (9).jpg" alt="">
-                                <div class="text-content">
-                                    <h4>Lorem ipsum dolor</h4>
-                                    <span>Tokyo</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item col-md-12">
-                            <div class="visited-item">
-                                <img src="img/images (1).jpg"height="170" alt="">
-                                <div class="text-content">
-                                    <h4>Proin dignissim</h4>
-                                    <span>Paris</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item col-md-12">
-                            <div class="visited-item">
-                                <img src="img/images.jpg" alt="">
-                                <div class="text-content">
-                                    <h4>Fusce sed ipsum</h4>
-                                    <span>Hollywood</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item col-md-12">
-                            <div class="visited-item">
-                                <img src="img/images (9).jpg" alt="">
-                                <div class="text-content">
-                                    <h4>Vivamus egestas</h4>
-                                    <span>Tokyo</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item col-md-12">
-                            <div class="visited-item">
-                                <img src="img/banner.jpg"height="170" alt="">
-                                <div class="text-content">
-                                    <h4>Aliquam elit metus</h4>
-                                    <span>New York</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item col-md-12">
-                            <div class="visited-item">
-                                <img src="img/images (2).jpg"height="170" alt="">
-                                <div class="text-content">
-                                    <h4>Phasellus pharetra</h4>
-                                    <span>Paris</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item col-md-12">
-                            <div class="visited-item">
-                                <img src="img/images.jpg" alt="">
-                                <div class="text-content">
-                                    <h4>In in quam efficitur</h4>
-                                    <span>Hollywood</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item col-md-12">
-                            <div class="visited-item">
-                                <img src="img/images (1).jpg"height="170" alt="">
-                                <div class="text-content">
-                                    <h4>Sed faucibus odio</h4>
-                                    <span>NEW YORK</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item col-md-12">
-                            <div class="visited-item">
-                                <img src="img/banner.jpg"height="170" alt="">
-                                <div class="text-content">
-                                    <h4>Donec varius porttitor</h4>
-                                    <span>Tokyo</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="page-direction-button">
+              <a href="contact.html"><i class="fa fa-phone"></i>Contact Us Now</a>
             </div>
+          </div>
         </div>
-    </section>
+        <div class="col-md-5 col-md-offset-1">
+          <section id="first-tab-group" class="tabgroup">
+            <div id="tab1">
+              <div class="submit-form">
+                <h4>Check availability for <em>direction</em>:</h4>
+                <form id="form-submit" action="" method="get">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <fieldset>
+                        <label for="from">From:</label>
+                        <select required name='Select a location...'>
+                          <!-- <option value="Cambodia">Select a location...</option>
+                          <option value="Hong Kong">Ahmedavad</option>
+                          <option value="India">Mehsana</option>
+                          <option value="Japan">Vadodra</option>
+                          <option value="Korea">Kashmir</option>
+                          <option value="Laos">Goa</option>
+                          <option value="Myanmar">Mumbai</option>
+                          <option value="Singapore">kerala</option>
+                          <option value="Thailand">Delhi</option>
+                          <option value="Vietnam">banglore</option>
+                          <option value="Vietnam">Hydrabad</option>
+                          <option value="Vietnam">Rajsathan</option>
+                          <option value="Vietnam"></option>
 
-
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="primary-button">
-                        <a href="#" class="scroll-top">Back To Top</a>
+                        </select> -->
+                      </fieldset>
                     </div>
-                </div>
-                <div class="col-md-12">
-                    <ul class="social-icons">
-                        <li><a href="https://www.facebook.com/tooplate"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-12">
-                    <p>Copyright &copy; 2018 Flight Tour and Travel Company
-                
-                | Design: <a href="http://www.code-projects.org" target="_parent"><em>Code Projects</em></a></p>
-                </div>
+                    <div class="col-md-6">
+                      <fieldset>
+                        <label for="to">To:</label>
+                        <select required name='to'>
+                          <option value="">Select a location...</option>
+                          <option value="Cambodia">Cambodia</option>
+                          <option value="Hong Kong">Hong Kong</option>
+                          <option value="India">India</option>
+                          <option value="Japan">Japan</option>
+                          <option value="Korea">Korea</option>
+                          <option value="Laos">Laos</option>
+                          <option value="Myanmar">Myanmar</option>
+                          <option value="Singapore">Singapore</option>
+                          <option value="Thailand">Thailand</option>
+                          <option value="Vietnam">Vietnam</option>
+                        </select>
+                      </fieldset>
+                    </div>
+                    <div class="col-md-6">
+                      <fieldset>
+                        <label for="departure">Departure date:</label>
+                        <input name="deparure" type="text" class="form-control date" id="deparure"
+                          placeholder="Select date..." required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-md-6">
+                      <fieldset>
+                        <label for="return">Return date:</label>
+                        <input name="return" type="text" class="form-control date" id="return"
+                          placeholder="Select date..." required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="radio-select">
+                        <div class="row">
+                          <div class="col-md-6 col-sm-6 col-xs-6">
+                            <label for="round">Round</label>
+                            <input type="radio" name="trip" id="round" value="round" required="required"
+                              onchange='this.form()'>
+                          </div>
+                          <div class="col-md-6 col-sm-6 col-xs-6">
+                            <label for="oneway">Oneway</label>
+                            <input type="radio" name="trip" id="oneway" value="one-way" required="required"
+                              onchange='this.form()'>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+
+                      <button type="submit" id="form-submit" class="btn" style="color:black;"><a href="buscmp2.html">
+                          Order Ticket Now</a></button>
+                      <button type="submit" id="form-submit" class="btn" style="color:black;"><a
+                          href="G:\new-otr-repo\index.html">Back</a></button>
+
+
+
+                      <fieldset>
+
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
+          </section>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
 
-    
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-    <script src="js/vendor/bootstrap.min.js"></script>
-    
-    <script src="js/datepicker.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+  <section class="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="service-item first-service">
+            <div class="service-icon"></div>
+            <h4>Easy Tooplate</h4>
+            <p> </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-item second-service">
+            <div class="service-icon"></div>
+            <h4>Unique Ideas</h4>
+            <p></p></a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-item third-service">
+            <div class="service-icon"></div>
+            <h4>Best Support</h4>
+            <p></p></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
 
-        
 
-        // navigation click actions 
-        $('.scroll-link').on('click', function(event){
-            event.preventDefault();
-            var sectionID = $(this).attr("data-id");
-            scrollToID('#' + sectionID, 750);
-        });
-        // scroll to top action
-        $('.scroll-top').on('click', function(event) {
-            event.preventDefault();
-            $('html, body').animate({scrollTop:0}, 'slow');         
-        });
-        // mobile nav toggle
-        $('#nav-toggle').on('click', function (event) {
-            event.preventDefault();
-            $('#main-nav').toggleClass("open");
-        });
+
+
+
+
+  <section id="most-visited">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Most Visited Places</h2>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div id="owl-mostvisited" class="owl-carousel owl-theme">
+            <div class="item col-md-12">
+              <div class="visited-item">
+                <img src="img/images.jpg" alt="">
+                <div class="text-content">
+                  <h4>River Views</h4>
+                  <span>New York</span>
+                </div>
+              </div>
+            </div>
+            <div class="item col-md-12">
+              <div class="visited-item">
+                <img src="img/images (9).jpg" alt="">
+                <div class="text-content">
+                  <h4>Lorem ipsum dolor</h4>
+                  <span>Tokyo</span>
+                </div>
+              </div>
+            </div>
+            <div class="item col-md-12">
+              <div class="visited-item">
+                <img src="img/images (1).jpg" height="170" alt="">
+                <div class="text-content">
+                  <h4>Proin dignissim</h4>
+                  <span>Paris</span>
+                </div>
+              </div>
+            </div>
+            <div class="item col-md-12">
+              <div class="visited-item">
+                <img src="img/images.jpg" alt="">
+                <div class="text-content">
+                  <h4>Fusce sed ipsum</h4>
+                  <span>Hollywood</span>
+                </div>
+              </div>
+            </div>
+            <div class="item col-md-12">
+              <div class="visited-item">
+                <img src="img/images (9).jpg" alt="">
+                <div class="text-content">
+                  <h4>Vivamus egestas</h4>
+                  <span>Tokyo</span>
+                </div>
+              </div>
+            </div>
+            <div class="item col-md-12">
+              <div class="visited-item">
+                <img src="img/banner.jpg" height="170" alt="">
+                <div class="text-content">
+                  <h4>Aliquam elit metus</h4>
+                  <span>New York</span>
+                </div>
+              </div>
+            </div>
+            <div class="item col-md-12">
+              <div class="visited-item">
+                <img src="img/images (2).jpg" height="170" alt="">
+                <div class="text-content">
+                  <h4>Phasellus pharetra</h4>
+                  <span>Paris</span>
+                </div>
+              </div>
+            </div>
+            <div class="item col-md-12">
+              <div class="visited-item">
+                <img src="img/images.jpg" alt="">
+                <div class="text-content">
+                  <h4>In in quam efficitur</h4>
+                  <span>Hollywood</span>
+                </div>
+              </div>
+            </div>
+            <div class="item col-md-12">
+              <div class="visited-item">
+                <img src="img/images (1).jpg" height="170" alt="">
+                <div class="text-content">
+                  <h4>Sed faucibus odio</h4>
+                  <span>NEW YORK</span>
+                </div>
+              </div>
+            </div>
+            <div class="item col-md-12">
+              <div class="visited-item">
+                <img src="img/banner.jpg" height="170" alt="">
+                <div class="text-content">
+                  <h4>Donec varius porttitor</h4>
+                  <span>Tokyo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="primary-button">
+            <a href="#" class="scroll-top">Back To Top</a>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <ul class="social-icons">
+            <li><a href="https://www.facebook.com/tooplate"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-12">
+          <p>Copyright &copy; 2018 Flight Tour and Travel Company
+
+            | Design: <a href="http://www.code-projects.org" target="_parent"><em>Code Projects</em></a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+  <script src="js/vendor/bootstrap.min.js"></script>
+
+  <script src="js/datepicker.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+
+
+      // navigation click actions 
+      $('.scroll-link').on('click', function (event) {
+        event.preventDefault();
+        var sectionID = $(this).attr("data-id");
+        scrollToID('#' + sectionID, 750);
+      });
+      // scroll to top action
+      $('.scroll-top').on('click', function (event) {
+        event.preventDefault();
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+      });
+      // mobile nav toggle
+      $('#nav-toggle').on('click', function (event) {
+        event.preventDefault();
+        $('#main-nav').toggleClass("open");
+      });
     });
     // scroll function
-    function scrollToID(id, speed){
-        var offSet = 0;
-        var targetOffset = $(id).offset().top - offSet;
-        var mainNav = $('#main-nav');
-        $('html,body').animate({scrollTop:targetOffset}, speed);
-        if (mainNav.hasClass("open")) {
-            mainNav.css("height", "1px").removeClass("in").addClass("collapse");
-            mainNav.removeClass("open");
-        }
+    function scrollToID(id, speed) {
+      var offSet = 0;
+      var targetOffset = $(id).offset().top - offSet;
+      var mainNav = $('#main-nav');
+      $('html,body').animate({ scrollTop: targetOffset }, speed);
+      if (mainNav.hasClass("open")) {
+        mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+        mainNav.removeClass("open");
+      }
     }
     if (typeof console === "undefined") {
-        console = {
-            log: function() { }
-        };
+      console = {
+        log: function () { }
+      };
     }
-    </script>
+  </script>
 </body>
+
 </html>

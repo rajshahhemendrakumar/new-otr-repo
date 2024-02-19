@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +39,10 @@
     }
 
     @media screen and (max-width: px) {
-      .navbar a:not(:first-child) {display: none;}
+      .navbar a:not(:first-child) {
+        display: none;
+      }
+
       .navbar a.icon {
         float: right;
         display: block;
@@ -51,45 +55,45 @@
         right: 0;
         top: 0;
       }
+
       .navbar.responsive a {
         float: none;
         display: block;
         text-align: left;
       }
     }
-    
-       
-
-
   </style>
 </head>
+
 <body>
 
-<div class="navbar" id="myNavbar">
-  <a href="#home" class="active"><img src="logo1.jpeg"height="25"width="150"></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;</a>
-<div class="m1">
-   <a href="login.html" >Admin panel </a>
-</div>
+  <div class="navbar" id="myNavbar">
+    <a href="#home" class="active"><img src="logo1.jpeg" height="25"
+        width="150"></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;</a>
+    <div class="m1">
+      <a href="login.html">Admin panel </a>
+    </div>
 
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
 
-<script>
-  function myFunction() {
-    var x = document.getElementById("myNavbar");
-    if (x.className === "navbar") {
-      x.className += " responsive";
-    } else {
-      x.className = "navbar";
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myNavbar");
+      if (x.className === "navbar") {
+        x.className += " responsive";
+      } else {
+        x.className = "navbar";
+      }
     }
-  }
-</script>
+  </script>
 
 </body>
+
 </html>
 
 
@@ -104,108 +108,101 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Ticket Booking System</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Ticket Booking System</title>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Ticket Booking System</h1>
-        <form action="booking_confirmation.html" method="post">
-            <label for="first">First Name:</label> 
-			<input type="text" id="first"
-				name="first"
-				placeholder="Enter your first name" required> 
+  <div class="container">
+    <h1>Ticket Booking System</h1>
+    <form action="booking_confirmation.html" method="post">
+      <label for="first">First Name:</label>
+      <input type="text" id="first" name="first" placeholder="Enter your first name" required>
 
-			<label for="last">Last Name:</label> 
-			<input type="text" id="last"
-				name="last"
-				placeholder="Enter your last name" required> 
+      <label for="last">Last Name:</label>
+      <input type="text" id="last" name="last" placeholder="Enter your last name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
 
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <label for="dob">Date of Birth:</label> 
-			<input type="date"
-				id="dob" name="dob"
-				placeholder="Enter your DOB" required> 
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" placeholder="Enter your DOB" required>
 
-			<span id="pass"></span> 
+        <span id="pass"></span>
 
-			<label for="mobile">Contact:</label> 
-			<input type="text" id="mobile"
-				name="mobile"
-				placeholder="Enter your Mobile Number" required 
-				maxlength="10"> 
+        <label for="mobile">Contact:</label>
+        <input type="text" id="mobile" name="mobile" placeholder="Enter your Mobile Number" required maxlength="10">
 
-			</select> 
+      </select>
 
-            </select>
+      </select>
 
-            <button type="submit"><a href="buscmp3.html">Book Ticket</a></button><br>
-             <button type="Back"style=""><a href="seatbet.html">Back</a></button>
-        </form>
-    </div>
+      <button type="submit"><a href="buscmp3.html">Book Ticket</a></button><br>
+      <button type="Back" style=""><a href="seatbet.html">Back</a></button>
+    </form>
+  </div>
 </body>
+
 </html>
 
 <style>
-body {
+  body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-}
+  }
 
-.container {
+  .container {
     max-width: 400px;
     margin: 50px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  }
 
-h1 {
+  h1 {
     text-align: center;
     color: #333;
-}
+  }
 
-form {
+  form {
     display: flex;
     flex-direction: column;
-}
+  }
 
-label {
+  label {
     margin-bottom: 8px;
     color: #333;
-}
+  }
 
-input, select {
+  input,
+  select {
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
+  }
 
-button {
+  button {
     padding: 12px;
     background-color: #3498db;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
+  }
 
-button:hover {
+  button:hover {
     background-color: #2980b9;
-}
-
+  }
 </style>
-
