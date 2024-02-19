@@ -649,6 +649,31 @@ http://www.tooplate.com/view/2093-flight
 
 
   <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+  <!-- search dropdown list  -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+    // Fetch JSON data from file
+    fetch("city.json")
+        .then(response => response.json())
+        .then(jsonData => {
+            // Populate dropdown with options
+            jsonData.forEach(function(city) {
+                $('#cityDropdown').append('<option value="' + city.id + '">' + city.name + '</option>');
+            });
+
+            // Initialize Select2 for searchable dropdown
+            $('#cityDropdown').select2();
+        })
+        .catch(error => {
+            // console.error("Error fetching JSON:", error);
+        });
+});
+
+</script>
+
 </head>
 
 <body>
@@ -690,7 +715,9 @@ http://www.tooplate.com/view/2093-flight
                     <div class="col-md-6">
                       <fieldset>
                         <label for="from">From:</label>
-                        <select required name='Select a location...'>
+                        <select id="cityDropdown" >
+                          <option value="">Select a city</option>
+                        
                           <!-- <option value="Cambodia">Select a location...</option>
                           <option value="Hong Kong">Ahmedavad</option>
                           <option value="India">Mehsana</option>
@@ -703,17 +730,18 @@ http://www.tooplate.com/view/2093-flight
                           <option value="Vietnam">banglore</option>
                           <option value="Vietnam">Hydrabad</option>
                           <option value="Vietnam">Rajsathan</option>
-                          <option value="Vietnam"></option>
+                          <option value="Vietnam"></option> -->
 
-                        </select> -->
+                        </select>
                       </fieldset>
                     </div>
                     <div class="col-md-6">
                       <fieldset>
                         <label for="to">To:</label>
-                        <select required name='to'>
-                          <option value="">Select a location...</option>
-                          <option value="Cambodia">Cambodia</option>
+                        <select id="cityDropdown">
+                          <option value="">Select a city</option>
+                     
+                          <!-- <option value="Cambodia">Cambodia</option>
                           <option value="Hong Kong">Hong Kong</option>
                           <option value="India">India</option>
                           <option value="Japan">Japan</option>
@@ -722,7 +750,7 @@ http://www.tooplate.com/view/2093-flight
                           <option value="Myanmar">Myanmar</option>
                           <option value="Singapore">Singapore</option>
                           <option value="Thailand">Thailand</option>
-                          <option value="Vietnam">Vietnam</option>
+                          <option value="Vietnam">Vietnam</option> -->
                         </select>
                       </fieldset>
                     </div>
