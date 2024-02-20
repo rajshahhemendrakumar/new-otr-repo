@@ -671,6 +671,23 @@ http://www.tooplate.com/view/2093-flight
             // console.error("Error fetching JSON:", error);
         });
 });
+$(document).ready(function() {
+    // Fetch JSON data from file
+    fetch("city.json")
+        .then(response => response.json())
+        .then(jsonData => {
+            // Populate dropdown with options
+            jsonData.forEach(function(city) {
+                $('#cityDropdown1').append('<option value="' + city.id + '">' + city.name + '</option>');
+            });
+
+            // Initialize Select2 for searchable dropdown
+            $('#cityDropdown1').select2();
+        })
+        .catch(error => {
+            // console.error("Error fetching JSON:", error);
+        });
+});
 
 </script>
 
@@ -717,28 +734,13 @@ http://www.tooplate.com/view/2093-flight
                         <label for="from">From:</label>
                         <select id="cityDropdown" >
                           <option value="">Select a city</option>
-                        
-                          <!-- <option value="Cambodia">Select a location...</option>
-                          <option value="Hong Kong">Ahmedavad</option>
-                          <option value="India">Mehsana</option>
-                          <option value="Japan">Vadodra</option>
-                          <option value="Korea">Kashmir</option>
-                          <option value="Laos">Goa</option>
-                          <option value="Myanmar">Mumbai</option>
-                          <option value="Singapore">kerala</option>
-                          <option value="Thailand">Delhi</option>
-                          <option value="Vietnam">banglore</option>
-                          <option value="Vietnam">Hydrabad</option>
-                          <option value="Vietnam">Rajsathan</option>
-                          <option value="Vietnam"></option> -->
-
                         </select>
                       </fieldset>
                     </div>
                     <div class="col-md-6">
                       <fieldset>
                         <label for="to">To:</label>
-                        <select id="cityDropdown">
+                        <select id="cityDropdown1 ">
                           <option value="">Select a city</option>
                      
                           <!-- <option value="Cambodia">Cambodia</option>
