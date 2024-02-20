@@ -115,11 +115,48 @@
   <link rel="stylesheet" href="styles.css">
   <title>Ticket Booking System</title>
 </head>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("sumbitfrom");
+      form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var name = document.getElementById("frist").value;
+          var surname = document.getElementById("last").value;
+          var email = document.getElementById("email").value;
+          var gender = document.getElementById("gender").value;
+          var dob = document.getElementById("dob").value;
+          var mobile = document.getElementById("mobile").value;
 
+          fetch("http://127.0.0.1:5000/insert-data", {
+              method: "POST",
+              headers: {
+                  'Accept': 'application/json, text/plain',
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  namek: name,
+                  surnamek: surname,
+                  emailk: email,
+                  genderk: gender,
+                  dobk:dob,
+                  mobilek:mobile
+              })
+          })
+        
+          .then((response) => {
+              console.log('response kkkkk', response);
+              // Handle response if needed
+          })
+          .catch((error) => {
+              console.error('Error:', error);
+          });
+      });
+  });
+</script>
 <body>
   <div class="container">
     <h1>Ticket Booking System</h1>
-    <form action="booking_confirmation.html" method="post">
+    <form id="fromsubmit" method="post">
       <label for="first">First Name:</label>
       <input type="text" id="first" name="first" placeholder="Enter your first name" required>
 
@@ -145,8 +182,8 @@
 
       </select>
 
-      <button type="submit"><a href="buscmp3.html">Book Ticket</a></button><br>
-      <button type="Back" style=""><a href="seatbet.html">Back</a></button>
+      <button type="submit"><a href="#">Book Ticket</a></button><br>
+      <button type="Back" ><a href="seatbet.html">Back</a></button>
     </form>
   </div>
 </body>

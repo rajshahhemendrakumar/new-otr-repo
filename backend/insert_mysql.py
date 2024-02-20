@@ -34,7 +34,11 @@ def insert_data():
     request_data = request.get_json()
     bname = request_data['namek']
     bsurname = request_data['surnamek']
-    cur.execute("INSERT INTO online (num,na) VALUES (%s, %s)", (bname, bsurname))
+    email=request_data['emailk']
+    gender=request_data['genderk']
+    dob=request_data['dobk']
+    mobile=request_data['mobilek']
+    cur.execute("INSERT INTO user_information (num,na) VALUES (%s, %s,%s, %s,%s, %s)", (bname, bsurname,email,gender,dob,mobile))
     mydb.commit()
 
     return jsonify({"status": "success"})
