@@ -69,12 +69,7 @@
 
   <div class="navbar" id="myNavbar">
     <a href="#home" class="active"><img src="logo1.jpeg" height="25"
-        width="150"></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;</a>
-    <div class="m1">
-      <a href="login.html">Admin panel </a>
-    </div>
+        width="150"></img>
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
@@ -112,51 +107,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
   <title>Ticket Booking System</title>
 </head>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById("sumbitfrom");
-      form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          var name = document.getElementById("frist").value;
-          var surname = document.getElementById("last").value;
-          var email = document.getElementById("email").value;
-          var gender = document.getElementById("gender").value;
-          var dob = document.getElementById("dob").value;
-          var mobile = document.getElementById("mobile").value;
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("fromsubmit");
+        if (form) {
+            form.addEventListener("formsubmit", function (e) {
+                e.preventDefault();
+                var frist = document.getElementById("frist").value;
+                var last = document.getElementById("last").value;
+                var email = document.getElementById("email").value;
+                var gender = document.getElementById("gender").value;
+                var dob = document.getElementById("dob").value;
+                var mobile = document.getElementById("mobile").value;
 
-          fetch("http://127.0.0.1:5000/insert-data", {
-              method: "POST",
-              headers: {
-                  'Accept': 'application/json, text/plain',
-                  "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                  namek: name,
-                  surnamek: surname,
-                  emailk: email,
-                  genderk: gender,
-                  dobk:dob,
-                  mobilek:mobile
-              })
-          })
-        
-          .then((response) => {
-              console.log('response kkkkk', response);
-              // Handle response if needed
-          })
-          .catch((error) => {
-              console.error('Error:', error);
-          });
-      });
-  });
+                fetch("http://127.0.0.1:5000/insert-data", {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json, text/plain',
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        fristk: frist,
+                        lastk: last,
+                        emailk: email,
+                        genderk: gender,
+                        dobk:dob,
+                        mobilek:mobile
+                    })
+                })
+                .then((response) => {
+                    console.log('response kkkkk', response);
+                    // Handle response if needed
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            });
+        } else {
+            console.error("Element with ID 'sumbitfrom' not found.");
+        }
+    });
+
+
 </script>
 <body>
   <div class="container">
     <h1>Ticket Booking System</h1>
-    <form id="fromsubmit" method="post">
+    <form ID="fromsubmit" method="post">
       <label for="first">First Name:</label>
       <input type="text" id="first" name="first" placeholder="Enter your first name" required>
 

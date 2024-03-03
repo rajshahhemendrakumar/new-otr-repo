@@ -32,13 +32,14 @@ def select():
 @app.route('/insert-data', methods=['POST'])
 def insert_data():
     request_data = request.get_json()
-    bname = request_data['namek']
-    bsurname = request_data['surnamek']
+    frist= request_data['fristk']
+    last = request_data['lastk']
+    print(last)
     email=request_data['emailk']
     gender=request_data['genderk']
     dob=request_data['dobk']
     mobile=request_data['mobilek']
-    cur.execute("INSERT INTO user_information (num,na) VALUES (%s, %s,%s, %s,%s, %s)", (bname, bsurname,email,gender,dob,mobile))
+    cur.execute("INSERT INTO user_information (FristName,LastName,Email,Gender,Dateofbrith,Contact) VALUES (%s, %s,%s,%s,%s, %s)", (frist,last,email,gender,dob,mobile))
     mydb.commit()
 
     return jsonify({"status": "success"})
