@@ -32,17 +32,31 @@ def select():
 @app.route('/insert-data', methods=['POST'])
 def insert_data():
     request_data = request.get_json()
-    frist= request_data['fristk']
+    frist= request_data['firstk']
     last = request_data['lastk']
-    print(last)
     email=request_data['emailk']
     gender=request_data['genderk']
     dob=request_data['dobk']
     mobile=request_data['mobilek']
-    cur.execute("INSERT INTO user_information (FristName,LastName,Email,Gender,Dateofbrith,Contact) VALUES (%s, %s,%s,%s,%s, %s)", (frist,last,email,gender,dob,mobile))
+    cur.execute("INSERT INTO users_information(FristName,LastName,Email,Gender,Dateofbrith,Contact) VALUES (%s, %s,%s,%s,%s, %s)", (frist,last,email,gender,dob,mobile))
     mydb.commit()
 
     return jsonify({"status": "success"})
+
+@app.route('/payment', methods=['POST'])
+def pay():
+    request_data = request.get_json()
+    cardnum= request_data['cardNumberk']
+    cardhold=request_data['cardHolderNamek']
+    expire=request_data['expireDatek']
+    ccv=request_data['ccvk']
+    amount=request_data['amountk']
+
+    cur.execute("INSERT INTO payment(Card_number,Card_holdername,Expiration_Date,CCV,amount) VALUES (%s, %s,%s,%s,%s)", (cardnum,cardhold,expire,ccv,amount))
+    mydb.commit()
+
+    return jsonify({"status": "success"})
+
 
 if __name__ == "__main__":
     app.run(debug=True)

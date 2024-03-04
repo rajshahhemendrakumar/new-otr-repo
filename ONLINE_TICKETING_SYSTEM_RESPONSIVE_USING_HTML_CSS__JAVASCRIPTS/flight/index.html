@@ -665,24 +665,14 @@ http://www.tooplate.com/view/2093-flight
             });
 
             // Initialize Select2 for searchable dropdown
-            $('#cityDropdown').select2();
-        })
-        .catch(error => {
-             console.error("Error fetching JSON:", error);
-        });
-});
-$(document).ready(function() {
-    // Fetch JSON data from file
-    fetch("city.json")
-        .then(response => response.json())
-        .then(jsonData => {
-            // Populate dropdown with options
             jsonData.forEach(function(city) {
                 $('#cityDropdown1').append('<option value="' + city.id + '">' + city.name + '</option>');
             });
 
             // Initialize Select2 for searchable dropdown
             $('#cityDropdown1').select2();
+            $('#cityDropdown').select2();
+
         })
         .catch(error => {
              console.error("Error fetching JSON:", error);
@@ -742,7 +732,7 @@ $(document).ready(function() {
                     <div class="col-md-6">
                       <fieldset>
                         <label for="to">To:</label>
-                        <select id="cityDropdown1 ">
+                        <select id="cityDropdown1">
                           <option value="">Select a city</option>
                      
                         </select>

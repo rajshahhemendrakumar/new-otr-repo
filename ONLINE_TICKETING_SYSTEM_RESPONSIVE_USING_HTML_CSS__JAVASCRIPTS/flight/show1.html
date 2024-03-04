@@ -102,92 +102,87 @@
 
 
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="styles.css"> -->
   <title>Ticket Booking System</title>
 </head>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("fromsubmit");
-        if (form) {
-            form.addEventListener("formsubmit", function (e) {
-                e.preventDefault();
-                var frist = document.getElementById("frist").value;
-                var last = document.getElementById("last").value;
-                var email = document.getElementById("email").value;
-                var gender = document.getElementById("gender").value;
-                var dob = document.getElementById("dob").value;
-                var mobile = document.getElementById("mobile").value;
-
-                fetch("http://127.0.0.1:5000/insert-data", {
-                    method: "POST",
-                    headers: {
-                        'Accept': 'application/json, text/plain',
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        fristk: frist,
-                        lastk: last,
-                        emailk: email,
-                        genderk: gender,
-                        dobk:dob,
-                        mobilek:mobile
-                    })
-                })
-                .then((response) => {
-                    console.log('response kkkkk', response);
-                    // Handle response if needed
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-            });
-        } else {
-            console.error("Element with ID 'sumbitfrom' not found.");
-        }
-    });
-
-
-</script>
 <body>
   <div class="container">
     <h1>Ticket Booking System</h1>
-    <form ID="fromsubmit" method="post">
+    <form id="formsubmit" method="post">
       <label for="first">First Name:</label>
       <input type="text" id="first" name="first" placeholder="Enter your first name" required>
 
-      <label for="last">Last Name:</label>
+      <label>Last Name:</label>
       <input type="text" id="last" name="last" placeholder="Enter your last name" required>
 
-      <label for="email">Email:</label>
+      <label>Email:</label>
       <input type="email" id="email" name="email" required>
 
-      <label for="gender">Gender:</label>
+      <label>Gender:</label>
       <select id="gender" name="gender" required>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" placeholder="Enter your DOB" required>
-
-        <span id="pass"></span>
-
-        <label for="mobile">Contact:</label>
-        <input type="text" id="mobile" name="mobile" placeholder="Enter your Mobile Number" required maxlength="10">
-
+        <option value=0>Male</option>
+        <option value=1>Female</option>
       </select>
 
-      </select>
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" placeholder="Enter your DOB" required>
 
-      <button type="submit"><a href="#">Book Ticket</a></button><br>
-      <button type="Back" ><a href="seatbet.html">Back</a></button>
+      <label for="mobile">Contact:</label>
+      <input type="text" id="mobile" name="mobile" placeholder="Enter your Mobile Number" required maxlength="10">
+
+      <button type="submit">Submit</button><br>
+      <button type="button"><a href="seatbet.html">Back</a></button>
     </form>
   </div>
-</body>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("formsubmit");
+
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          
+          var first = document.getElementById("first").value;
+          var last = document.getElementById("last").value;
+          var email = document.getElementById("email").value;
+          var gender = document.getElementById("gender").value;
+          var dob = document.getElementById("dob").value;
+          var mobile = document.getElementById("mobile").value;
+
+          fetch("http://127.0.0.1:5000/insert-data", {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json, text/plain',
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              firstk: first,
+              lastk: last,
+              emailk: email,
+              genderk: gender,
+              dobk: dob,
+              mobilek: mobile
+            })
+          })
+          .then((response) => {
+            console.log('response', response);
+            // Handle response if needed
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+        });
+      } else {
+        console.error("Element with ID 'formsubmit' not found.");
+      }
+    });
+  </script>
+</body>
 </html>
 
 <style>

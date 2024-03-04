@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,77 +52,110 @@
             cursor: pointer;
         }
 
-        .f1{
+        .f1 {
             color: #f4f4f4;
             text-align: right;
-            top:15px;
+            top: 15px;
             max-width: 50px;
             text-align: right;
-          
+
         }
     </style>
 </head>
+
 <body>
 
-<nav>
-  <img src="logo1.jpeg"height="45"width="180">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <A href="login.html"class="f1">Admin panel</A>
-</nav>
-   
+    <nav>
+        <img src="logo1.jpeg" height="45" width="180">
+    </nav>
 
-<div class="payment-form">
-    <label for="cardNumber">Card Number</label>
-    <input type="text" id="cardNumber" placeholder="Enter card number" required>
+    <form id="payment" method="post">
+        <div class="payment-form">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" placeholder="Enter card number" required>
 
-    <label for="cardHolderName">Cardholder Name</label>
-    <input type="text" id="cardHolderName" placeholder="Enter cardholder name" required>
+            <label for="cardHolderName">Cardholder Name</label>
+            <input type="text" id="cardHolderName" placeholder="Enter cardholder name" required>
 
-    <label for="expireDate">Expiration Date</label>
-    <input type="text" id="expireDate" placeholder="MM/YY" required>
+            <label for="expireDate">Expiration Date</label>
+            <input type="text" id="expireDate" placeholder="MM/YY" required>
 
-    <label for="ccv">CCV</label>
-    <input type="text" id="ccv" placeholder="Enter CCV" required>
+            <label for="ccv">CCV</label>
+            <input type="text" id="ccv" placeholder="Enter CCV" required>
 
-    <label for="amount">Amount</label>
-    <input type="text" id="amount" placeholder="Enter amount" required>
+            <label for="amount">Amount</label>
+            <input type="text" id="amount" placeholder="Enter amount" required>
 
-    <button class="submit-button" onclick="submitPayment()">Submit</button>
-</div>
+            <button class="submit-button" onclick="submitPayment()">Submit</button>
+        </div>
+    </form>
+    <script>
 
-<script>
-    function submitPayment() {
-        // Get input values
-        var cardNumber = document.getElementById('cardNumber').value;
-        var cardHolderName = document.getElementById('cardHolderName').value;
-        var expireDate = document.getElementById('expireDate').value;
-        var ccv = document.getElementById('ccv').value;
-        var amount = document.getElementById('amount').value;
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("payment");
+            console.log("------")
+            if (form) {
+                form.addEventListener("payment", function (e) {
+                    e.preventDefault();
+                    var cardNumber = document.getElementById('cardNumber').value;
+                    var cardHolderName = document.getElementById('cardHolderName').value;
+                    var expireDate = document.getElementById('expireDate').value;
+                    var ccv = document.getElementById('ccv').value;
+                    var amount = document.getElementById('amount').value;
 
-        // Validate input (you can add more validation as needed)
+                    fetch("http://127.0.0.1:5000/payment", {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json, text/plain',
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        cardNumberk:cardNumber,
+                        cardHolderNamek:cardHolderName,
+                        expireDatek:expireDate,
+                        ccvk:ccv,
+                        amountk:amount
+                    })
+          })
+          .then((response) => {
+            console.log('response', response);
+            // Handle response if needed
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+        });
+      } else {
+        console.error("Element with ID 'formsubmit' not found.");
+      }
+    });
 
-        // Generate message popup
-        var message = `Payment Details:
+
+                    function submitPayment() {
+                        // Get input values
+                        var cardNumber = document.getElementById('cardNumber').value;
+                        var cardHolderName = document.getElementById('cardHolderName').value;
+                        var expireDate = document.getElementById('expireDate').value;
+                        var ccv = document.getElementById('ccv').value;
+                        var amount = document.getElementById('amount').value;
+
+                        // Validate input (you can add more validation as needed)
+
+                        // Generate message popup
+                        var message = `Payment Details:
             Card Number: ${cardNumber}
             Cardholder Name: ${cardHolderName}
             Expiration Date: ${expireDate}
             CCV: ${ccv}
             Amount: ${amount}`;
 
-        alert(message);
-        alert("succefully payment");
-        // Redirect to another page
-        window.location.href = 'secondPage.html';
-    }
-</script>
+                        alert(message);
+                        alert("succefully payment");
+                        // Redirect to another page
+                        window.location.href = 'secondPage.html';
+                    }
+    </script>
 
 </body>
+
 </html>
