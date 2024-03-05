@@ -73,7 +73,7 @@
         <div class="payment-form">
             <label for="cardNumber">Card Number</label>
             <input type="text" id="cardNumber" placeholder="Enter card number" required>
-
+ 
             <label for="cardHolderName">Cardholder Name</label>
             <input type="text" id="cardHolderName" placeholder="Enter cardholder name" required>
 
@@ -85,18 +85,20 @@
 
             <label for="amount">Amount</label>
             <input type="text" id="amount" placeholder="Enter amount" required>
-
-            <button class="submit-button" onclick="submitPayment()">Submit</button>
+            <input type="submit">
+            <!-- <button class="submit-button" onclick="submitPayment()">Submit</button> -->
         </div>
     </form>
     <script>
 
         document.addEventListener("DOMContentLoaded", function () {
             const form = document.getElementById("payment");
-            console.log("------")
+                                 
+
             if (form) {
-                form.addEventListener("payment", function (e) {
+                form.addEventListener("submit", function (e) {
                     e.preventDefault();
+                   
                     var cardNumber = document.getElementById('cardNumber').value;
                     var cardHolderName = document.getElementById('cardHolderName').value;
                     var expireDate = document.getElementById('expireDate').value;
@@ -152,7 +154,7 @@
                         alert(message);
                         alert("succefully payment");
                         // Redirect to another page
-                        window.location.href = 'secondPage.html';
+                        // window.location.href = 'secondPage.html';
                     }
     </script>
 

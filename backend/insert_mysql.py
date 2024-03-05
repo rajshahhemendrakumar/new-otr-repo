@@ -52,7 +52,7 @@ def pay():
     ccv=request_data['ccvk']
     amount=request_data['amountk']
 
-    cur.execute("INSERT INTO payment(Card_number,Card_holdername,Expiration_Date,CCV,amount) VALUES (%s, %s,%s,%s,%s)", (cardnum,cardhold,expire,ccv,amount))
+    cur.execute("INSERT INTO payment(booking_id,Card_number,Card_holdername,Expiration_Date,CCV,amount) VALUES (%s,%s, %s,%s,%s,%s)",("1",cardnum,cardhold,expire,ccv,amount))
     mydb.commit()
 
     return jsonify({"status": "success"})
