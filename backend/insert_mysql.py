@@ -28,7 +28,7 @@ def select():
     return jsonify({"data": result})
 
     return jsonify(data)
-
+#user data store
 @app.route('/insert-data', methods=['POST'])
 def insert_data():
     request_data = request.get_json()
@@ -42,7 +42,7 @@ def insert_data():
     mydb.commit()
 
     return jsonify({"status": "success"})
-
+# payment 
 @app.route('/payment', methods=['POST'])
 def pay():
     request_data = request.get_json()
@@ -56,8 +56,16 @@ def pay():
     mydb.commit()
 
     return jsonify({"status": "success"})
-
-
+# admin login
+@app.route('/login', methods=['POST'])
+def log():
+    request_data = request.get_json()
+    name= request_data['namek']
+    passw=request_data['passk']
+    print(name)
+    cur.execute("select * from admin_table where UserName=%s and Password= %s",(name,passw,))
+    data = cur.fetchall() 
+    print(data)
 if __name__ == "__main__":
     app.run(debug=True)
 print("khush")

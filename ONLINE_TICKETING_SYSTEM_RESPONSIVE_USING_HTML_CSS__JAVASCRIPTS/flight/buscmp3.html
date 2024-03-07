@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +39,10 @@
     }
 
     @media screen and (max-width: 600px) {
-      .navbar a:not(:first-child) {display: none;}
+      .navbar a:not(:first-child) {
+        display: none;
+      }
+
       .navbar a.icon {
         float: right;
         display: block;
@@ -51,6 +55,7 @@
         right: 0;
         top: 0;
       }
+
       .navbar.responsive a {
         float: none;
         display: block;
@@ -59,36 +64,19 @@
     }
   </style>
 </head>
+
 <body>
 
-<div class="navbar" id="myNavbar">
-  <a href="#home" class="active"><img src="logo1.jpeg"height="30"width="150">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</img></a>  
+  <div class="navbar" id="myNavbar">
+    <a href="#home" class="active"><img src="logo1.jpeg" height="30" width="150"></img></a>
+  </div>
 
-  <a href="login.html">Admin panel</a> 
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
+  <script>
 
-<script>
-  function myFunction() {
-    var x = document.getElementById("myNavbar");
-    if (x.className === "navbar") {
-      x.className += " responsive";
-    } else {
-      x.className = "navbar";
-    }
-  }
-</script>
+  </script>
 
 </body>
+
 </html>
 
 
@@ -175,97 +163,68 @@
 <html>
 
 <head>
-	<title>CSS Box Model</title>
-	<style>
-		.main {
-			font-size: 36px;
-			font-weight: bold;
-			Text-align: center;
-            margin-bottom: 210px;
-		}
-		
-		.gfg {
-            margin-left: 500px;
-			border: 10px solid #001499;
-			width: 300px;
-			height: 400px;
-			text-align: center;
-			padding: 50px;
-		}
-		
-		.gfg1 {
-			font-size: 42px;
-			font-weight: bold;
-			color:#1f1b9c;
-			margin-top: 100px;
-			background-color: #c5c5db;
-		}
-		
-		.gfg2 {
-			font-size: 18px;
-			font-weight: bold;
-			background-color: #c5c5db;
-		}
-		.b1{
-			background-color: #04AA6D;
-        }
+  <title>CSS Box Model</title>
+  <style>
+    .main {
+      font-size: 36px;
+      font-weight: bold;
+      Text-align: center;
+      margin-bottom: 210px;
+    }
 
-            .button {
-  background-color: hsl(53, 94%, 52%);
-  border: none;
-  color: white;
-  padding: 20px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 26px;
-  cursor: pointer;
-  margin-bottom:10px;
-  border-radius:20px ;
-}
+    .gfg {
+      margin-left: 500px;
+      border: 10px solid #001499;
+      width: 300px;
+      height: 400px;
+      text-align: center;
+      padding: 50px;
+    }
 
-        
-	</style>
+    .gfg1 {
+      font-size: 42px;
+      font-weight: bold;
+      color: #1f1b9c;
+      margin-top: 100px;
+      background-color: #c5c5db;
+    }
+
+    .gfg2 {
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #c5c5db;
+    }
+
+    .b1 {
+      background-color: #04AA6D;
+    }
+
+    .button {
+      background-color: hsl(53, 94%, 52%);
+      border: none;
+      color: white;
+      padding: 20px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 26px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 20px;
+    }
+  </style>
 </head>
 
 <body align="center" bgcolor="lightblue">
-    <div class="main">
-        <header>
-        <nav>
-            <ul>
-                
-            </ul>
-        </nav>
-    </header>
-        
-            <br>
-          <!-- <input type = "Label" id = "L1" name=""placeholder="-----To----">
-          <input type = "Label" id = "L1" name=""placeholder="-----From----"> 
-            <br> -->
-          <style>
-               .L1{
-                   margin-left:45px;
-               }
-          </style>
-      
-  
-  
-  
-      
-              <div class="gfg">
-          <!-- <div class="gfg1">
-              <input type="text" id="fname" name="fname" placeholder="Enter a name"><br><br>
-              <input type="text" id="fname" name="fname"placeholder="Enter a name"><br><br>
-  
-              <input type="submit"id="b1"/> &nbsp; <input type="submit" value="Continue"id="b2"/>
-  
-              GeeksforG
-              eeks -->
-		</div> <br>
-        <button type="submit" class="button"><a href="buscmp2.html">Back</a> </button> &nbsp;&nbsp;
-        &nbsp; <button type ="submit" class="button"><a href="Payment.html">Continue</a></button>
-</div>
+  <div class="main">
+    <br>
+    <div class="gfg">
+
+    </div> <br>
+    <button type="submit" class="button"><a href="show1.html">Back</a> </button> &nbsp;&nbsp;
+    &nbsp; <button type="submit" class="button"><a href="Payment.html">Continue</a></button>
+  </div>
 </body>
 
-</html>---
+</html>

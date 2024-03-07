@@ -23,17 +23,7 @@
       text-decoration: none;
     }
 
-    /* .navbar a:hover {
-      background-color: #ddd;
-      
-      color: black;
-    } */
-
-    /* .navbar a.active {
-      background-color: #000300;
-      color: white;
-    } */
-
+   
     .navbar .icon {
       display: none;
     }
@@ -65,29 +55,12 @@
 <div class="navbar" id="myNavbar">
   <a href="#home" class="active"><img src="logo1.jpeg"height="25"width="150">&nbsp;</img></a>
   
-  <!-- <a href="#contact">Contact &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </a> -->
-  <!-- <a href="login.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Admin panel</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()"> -->
-    <i class="fa fa-bars"></i>
+   <i class="fa fa-bars"></i>
   </a>
 </div>
 
 <script>
-  function myFunction() {
-    var x = document.getElementById("myNavbar");
-    if (x.className === "navbar") {
-      x.className += " responsive";
-    } else {
-      x.className = "navbar";
-    }
-  }
+  
 </script>
 
 </body>
@@ -152,24 +125,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Login Page</title>
+    <title>Login Form</title>
 </head>
 <body>
-    <div class="container">
-        <div class="form-container login-container">
-            <form action="#" method="post">
-                <h2>Login</h2>
-                <input type="text" placeholder="Username" required>
-                <input type="password" placeholder="Password" required>
-                <button type="submit">Login</button>
-                <p class="redirect-link">Don't have an account? <a href="register.html">Register here</a></p>
-            </form>
-        </div>
-    </div>
+  <div class="container">
+    <div class="form-container login-container">
+    <form id="login">
+        <label for="uname">Username:</label>
+        <input type="text" id="uname" name="uname" required><br><br>
+        <label for="pass">Password:</label>
+        <input type="password" id="pass" name="pass" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+  </div>
+  </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("login");
+            if (form) {
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    var name = document.getElementById("uname").value;
+                    var pass = document.getElementById("pass").value;
+
+                    fetch("http://127.0.0.1:5000/login", {
+                        method: "POST",
+                        headers: {
+                            'Accept': 'application/json, text/plain',
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            namek: name,
+                            passk: pass
+                        })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Success:', data);
+                        // Handle successful login here
+                    })
+                    .catch(error => {
+                        //console.error('Error:', error);
+                        // Handle errors here
+                    });
+                });
+            } else {
+                console.error("Element with ID 'login' not found.");
+            }
+        });
+    </script>
 </body>
 </html>
-
 
 
 
