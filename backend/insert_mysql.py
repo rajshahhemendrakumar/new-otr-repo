@@ -27,7 +27,6 @@ def select():
 
     return jsonify({"data": result})
 
-    return jsonify(data)
 #user data store
 @app.route('/insert-data', methods=['POST'])
 def insert_data():
@@ -40,7 +39,9 @@ def insert_data():
     mobile=request_data['mobilek']
     cur.execute("INSERT INTO users_information(FristName,LastName,Email,Gender,Dateofbrith,Contact) VALUES (%s, %s,%s,%s,%s, %s)", (frist,last,email,gender,dob,mobile))
     mydb.commit()
-
+    #todo make return statement universal for every api 
+    #formamt=> {"status":200,"msg":"your msg","data":[]}
+    #status=>success=200,error=>500
     return jsonify({"status": "success"})
 # payment 
 @app.route('/payment', methods=['POST'])
@@ -63,9 +64,23 @@ def log():
     name= request_data['namek']
     passw=request_data['passk']
     print(name)
-    cur.execute("select * from admin_table where UserName=%s and Password= %s",(name,passw,))
-    data = cur.fetchall() 
-    print(data)
+    cur.execute("select * from admin_table where UserName=%s and Password= %s",(name,passw))
+    data = cur.fetchall()
+    if(len(data)>0):
+         return jsonify({"status":200,"msg": "success",f"data":[data]})
+    else:
+         return jsonify({"status":500,"msg": "fail",f"data":[data]})
+
+
+    # result = []
+    # for row in data:
+    #     # Assuming the first column is 'id' and the second column is 'name'
+    #     result.append({"id": row[0], "name": row[1]})  # Adjust column indexes accordingly
+    
+    # print(result)
+    # return jsonify({"data": result})
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 print("khush")

@@ -166,7 +166,15 @@
                         return response.json();
                     })
                     .then(data => {
-                        console.log('Success:', data);
+                        if(data.status==200)
+                        {
+                          window.location.replace("show1.html")
+                          console.log('Success:', data);
+                        }
+                        else
+                        {
+                          alert("INVALID USERNAME OR PASSWORD.....!!");
+                        }
                         // Handle successful login here
                     })
                     .catch(error => {
