@@ -72,12 +72,56 @@
             background-color: #45a049;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("book");
+
+    if (form) {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const source = document.getElementById('source').value;
+            const destination = document.getElementById('destination').value;
+            const bus = document.getElementById('bus-number').value;
+            const location = document.getElementById('location').value;
+          //api not call but why
+            fetch("http://127.0.0.1:5000/add_bus", {    
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    source: source,
+                    destination: destination,
+                    bus: bus,
+                    location: location
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response:', data);
+                // Optionally handle response data
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Optionally handle errors
+            });
+        });
+    } else {
+        console.error("Element with ID 'book' not found.");
+    }
+});
+
+
+                   
+    </script>
 </head>
 <body>
 
 <div class="container">
     <h2>Bus Booking</h2>
-    <form action="#" method="post">
+    <form action="#" method="post" id="book">
         <label for="source">Source</label>
         <input type="text" id="source" name="source" required>
 

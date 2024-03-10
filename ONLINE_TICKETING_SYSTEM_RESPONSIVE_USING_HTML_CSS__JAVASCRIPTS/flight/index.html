@@ -679,6 +679,45 @@ http://www.tooplate.com/view/2093-flight
         });
 });
 
+//for search a bus api called
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("form-submit");
+
+    if (form) {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+          alert("kkk")
+            const source = document.getElementById('source').value;
+            const to = document.getElementById('to').value;
+            fetch("http://127.0.0.1:5000/search_bus", {    
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    sourcek: "patan",//source,to orginal value
+                    tok:"unja"
+                  })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response:', data);
+                // Optionally handle response data
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Optionally handle errors
+            });
+        });
+    } else {
+        console.error("Element with ID 'book' not found.");
+    }
+});
+
+            
+      
 </script>
 
 
@@ -724,7 +763,7 @@ http://www.tooplate.com/view/2093-flight
                     <div class="col-md-6">
                       <fieldset>
                         <label for="from">From:</label>
-                        <select id="cityDropdown" >
+                        <select id="cityDropdown" name="source" >
                           <option value="">Select a city</option>
                         </select>
                       </fieldset>
@@ -732,7 +771,7 @@ http://www.tooplate.com/view/2093-flight
                     <div class="col-md-6">
                       <fieldset>
                         <label for="to">To:</label>
-                        <select id="cityDropdown1">
+                        <select id="cityDropdown1" name="to">
                           <option value="">Select a city</option>
                      
                         </select>
@@ -769,9 +808,9 @@ http://www.tooplate.com/view/2093-flight
                       </div>
                     </div>
                     <div class="col-md-6">
-
-                      <button type="submit" id="form-submit" class="btn" style="color:black;"><a href="buscmp2.html">
-                          Order Ticket Now</a></button>
+                      <input type="submit"name="submit">
+                      <!-- <button type="submit" id="form-submit" class="btn" style="color:black;"><a href="buscmp2.html">
+                          Order Ticket Now</a></button> -->
                       <button type="submit" id="form-submit" class="btn" style="color:black;"><a
                           href="G:\new-otr-repo\index.html">Back</a></button>
 
