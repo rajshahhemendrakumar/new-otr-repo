@@ -92,10 +92,10 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    source: source,
-                    destination: destination,
-                    bus: bus,
-                    location: location
+                    sourcek: source,
+                    destinationk: destination,
+                    busk: bus,
+                    locationk: location
                 })
             })
             .then(response => response.json())
@@ -121,7 +121,7 @@
 
 <div class="container">
     <h2>Bus Booking</h2>
-    <form action="#" method="post" id="book">
+    <form  method="post" id="book">
         <label for="source">Source</label>
         <input type="text" id="source" name="source" required>
 
@@ -133,7 +133,7 @@
         
        
         <label for="location">Location</label>
-        <input type="text" id="Location" name="Location",required>
+        <input type="text" id="location" name="location",required>
         
         
         <input type="submit" value="Add Bus">

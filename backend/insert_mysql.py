@@ -92,7 +92,7 @@ def search():
     sor= request_data['sourcek']
     to= request_data['tok']
 
-    cur.execute("select * from admin_table where UserName=%s and Password= %s",(sor,to))
+    cur.execute("select * from booking_bus_admin where Source=%s and Destination= %s",(sor,to))
     data = cur.fetchall()
     if(len(data)>0):
          return jsonify({"status":200,"msg": "success",f"data":[data]})
