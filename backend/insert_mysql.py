@@ -13,6 +13,7 @@ def hello():
     return "Welcome to the page!"
 #this is another page api which
 #demo api only check ....
+# this is work for select_khush
 @app.route('/select_frist', methods=["POST"])
 def select():
     request_data = request.get_json()
@@ -80,8 +81,8 @@ def addbus():
     des= request_data['destinationk']
     bus= request_data['busk']
     location= request_data['locationk']
-
-    cur.execute("INSERT INTO booking_bus_admin(Source,Destination,Bus_Number,Location) VALUES (%s, %s,%s,%s)",(source,des,bus,location))
+    time= request_data['timek']
+    cur.execute("INSERT INTO booking_bus_admin(Source,Destination,Bus_Number,Price,Time) VALUES (%s, %s,%s,%s,%s)",(source,des,bus,location,time))
 
     mydb.commit()
     return jsonify({"status":200,"msg": "success"})
@@ -91,13 +92,22 @@ def search():
     request_data = request.get_json()
     sor= request_data['sourcek']
     to= request_data['tok']
-
+    print(sor)
     cur.execute("select * from booking_bus_admin where Source=%s and Destination= %s",(sor,to))
     data = cur.fetchall()
+    
+   
+
     if(len(data)>0):
-         return jsonify({"status":200,"msg": "success",f"data":[data]})
+        result = []
+        for row in data:
+        # Assuming the first column is 'id' and the second column is 'name'
+             result.append({"Source": row[0], "Destintation": row[1],"Bus_Number": row[2],"Price": row[3]})  # Adjust column indexes accordingly
+    
+             return jsonify({"status":200,"msg": "success",f"data":result})
+    
     else:
-         return jsonify({"status":500,"msg": "fail",f"data":[data]})
+         return jsonify({"status":500,"msg": "fail",f"data":data})
 
 if __name__ == "__main__":
     app.run(debug=True)

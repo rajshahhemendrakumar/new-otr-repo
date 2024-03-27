@@ -633,7 +633,7 @@ Template 2093 Flight
 http://www.tooplate.com/view/2093-flight
 
 -->
-  <title>Flight - Travel and Tour</title>
+  <title>Online Ticket Booking</title>
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -652,73 +652,86 @@ http://www.tooplate.com/view/2093-flight
 
   <!-- search dropdown list  -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-<script>
-    $(document).ready(function() {
-    // Fetch JSON data from file
-    fetch("city.json")
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Fetch JSON data from file
+      fetch("city.json")
         .then(response => response.json())
         .then(jsonData => {
-            // Populate dropdown with options
-            jsonData.forEach(function(city) {
-                $('#cityDropdown').append('<option value="' + city.id + '">' + city.name + '</option>');
-            });
+          // Populate dropdown with options
+          jsonData.forEach(function (city) {
+            $('#cityDropdown').append('<option value="' + city.name + '">' + city.name + '</option>');
+          });
 
-            // Initialize Select2 for searchable dropdown
-            jsonData.forEach(function(city) {
-                $('#cityDropdown1').append('<option value="' + city.id + '">' + city.name + '</option>');
-            });
+          // Initialize Select2 for searchable dropdown
+          jsonData.forEach(function (city) {
+            $('#cityDropdown1').append('<option value="' + city.name + '">' + city.name + '</option>');;
+          });
 
-            // Initialize Select2 for searchable dropdown
-            $('#cityDropdown1').select2();
-            $('#cityDropdown').select2();
+          // Initialize Select2 for searchable dropdown
+          $('#cityDropdown1').select2();
+          $('#cityDropdown').select2();
 
         })
         .catch(error => {
-             console.error("Error fetching JSON:", error);
+          console.error("Error fetching JSON:", error);
         });
-});
+    });
 
-//for search a bus api called
+    //for search a bus api called
 
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("form-submit");
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("form-submit");
 
-    if (form) {
+      if (form) {
         form.addEventListener("submit", function (e) {
-            e.preventDefault();
-          alert("kkk")
-            const source = document.getElementById('source').value;
-            const to = document.getElementById('to').value;
-            fetch("http://127.0.0.1:5000/search_bus", {    
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    sourcek: "patan",//source,to orginal value
-                    tok:"unja"
-                  })
+          e.preventDefault();
+
+          const sourceElement = document.getElementById('cityDropdown');
+          const toElement = document.getElementById('cityDropdown1');
+
+          const source = sourceElement.options[sourceElement.selectedIndex].value;
+            const to = toElement.options[toElement.selectedIndex].value;
+
+          fetch("http://127.0.0.1:5000/search_bus", {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              sourcek: source,//source,to orginal value
+              tok: to
             })
+          })
             .then(response => response.json())
             .then(data => {
-                console.log('Response:', data);
-                // Optionally handle response data
+              console.log(data)
+              if (data.status == 200) {
+               window.location.replace("buscmp2.html")
+                window.location.href = "buscmp2.html?data=" + JSON.stringify(data.data);
+                console.log('Success:', data);
+              }
+              else {
+                alert("INVALID SOURCE AND DESTATAION.....!!");
+              }
+
+              // Optionally handle response data
             })
             .catch(error => {
-                console.error('Error:', error);
-                // Optionally handle errors
+              console.error('Error:', error);
+              // Optionally handle errors
             });
         });
-    } else {
+      } else {
         console.error("Element with ID 'book' not found.");
-    }
-});
+      }
+    });
 
-            
-      
-</script>
+
+
+  </script>
 
 
 
@@ -763,7 +776,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="col-md-6">
                       <fieldset>
                         <label for="from">From:</label>
-                        <select id="cityDropdown" name="source" >
+                        <select id="cityDropdown" name="source">
                           <option value="">Select a city</option>
                         </select>
                       </fieldset>
@@ -773,7 +786,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <label for="to">To:</label>
                         <select id="cityDropdown1" name="to">
                           <option value="">Select a city</option>
-                     
+
                         </select>
                       </fieldset>
                     </div>
@@ -796,21 +809,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="row">
                           <div class="col-md-6 col-sm-6 col-xs-6">
                             <label for="round">Round</label>
-                            <input type="radio" name="trip" id="round" value="round" required="required"
-                              onchange='this.form()'>
+                            <input type="radio" name="trip" id="round" value="round" required="required">
                           </div>
                           <div class="col-md-6 col-sm-6 col-xs-6">
                             <label for="oneway">Oneway</label>
-                            <input type="radio" name="trip" id="oneway" value="one-way" required="required"
-                              onchange='this.form()'>
+                            <input type="radio" name="trip" id="oneway" value="one-way" required="required">
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <input type="submit"name="submit">
-                      <!-- <button type="submit" id="form-submit" class="btn" style="color:black;"><a href="buscmp2.html">
-                          Order Ticket Now</a></button> -->
+                      <!-- <input type="submit"name="submit"> -->
+                      <button type="submit" id="form-submit" name="submit" class="btn" style="color:black;">
+                          Order Ticket Now</a></button>
                       <button type="submit" id="form-submit" class="btn" style="color:black;"><a
                           href="G:\new-otr-repo\index.html">Back</a></button>
 
