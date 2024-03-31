@@ -232,7 +232,7 @@
 <html>
 
 <head>
-  <title>CSS Box Model</title>
+  <title>Serach Buss</title>
   <style>
     .main {
       font-size: 36px;
@@ -283,43 +283,46 @@
       border-radius: 20px;
     }
   </style>
-  <script>
-    window.onload = function () {
-      var params = new URLSearchParams(window.location.search);
-      var data = params.get('data');
-      document.getElementById('data').innerText = data;
-      // Create an object to hold the data
-      var jsonData = { "data": data };
-      console.log(jsonData);
-      
-      
-      var tableBody = document.querySelector("#data-table tbody");
+ <script>
+  window.onload = function () {
+    var params = new URLSearchParams(window.location.search);
+    var data = params.get('data');
+    console.log('data', data);
+    var jsonData = JSON.parse(data);
+    console.log('jsonData', jsonData);
 
-  jsonData.forEach(function (item) {
+    var tableBody = document.getElementById('table-body');
+    var tableHead = document.getElementById('table-head');
+
+    // Get the keys from the first item in the JSON data
+    var keys = Object.keys(jsonData[0]);
+
+    // Create table headers
+    var headerRow = document.createElement("tr");
+    keys.forEach(function (key) {
+      var headerCell = document.createElement("th");
+      headerCell.textContent = key;
+      headerRow.appendChild(headerCell);
+    });
+    tableHead.appendChild(headerRow);
+
+    // Populate table body
+    jsonData.forEach(function (item) {
       var row = document.createElement("tr");
-      var idCell = document.createElement("td");
-      var valueCell = document.createElement("td");
-      idCell.textContent = item.id;
-      valueCell.textContent = item.value;
-
-      // Append cells to the row
-      row.appendChild(idCell);
-      row.appendChild(valueCell);
-
-      // Append row to the table body
+      keys.forEach(function (key) {
+        var valueCell = document.createElement("td");
+        valueCell.textContent = item[key];
+        row.appendChild(valueCell);
+      });
       tableBody.appendChild(row);
     });
-  }
+  };
+</script>
 
-
-      console.log(jsonString);
-      populateTable(jsonData);
-  
-  </script>
 </head>
 
 <body align="center" bgcolor="lightblue">
-  <div class="main">
+  <div class="main">  
     <br>
     <style>
       .L1 {
@@ -328,17 +331,15 @@
     </style>
     <div class="gfg">
       <p id="data"></p>
-      <table id="data-table" border="1">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
+     <a href=""> <table id="data-table" border="1">
+      <thead id="table-head">
+        <!-- Table headers will be dynamically inserted here -->
+      </thead>
+      
+        <tbody id="table-body">
           <!-- Data will be dynamically inserted here -->
         </tbody>
-      </table>
+      </table></a>
      
     </div> <br>
     <button type="submit" class="button"><a href="index.html">Back</a></button> &nbsp;&nbsp;
