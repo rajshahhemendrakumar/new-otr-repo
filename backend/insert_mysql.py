@@ -88,26 +88,23 @@ def addbus():
     return jsonify({"status":200,"msg": "success"})
 # search  bus threw normal user
 @app.route('/search_bus', methods=['POST'])
+@app.route('/search_bus', methods=['POST'])
 def search():
     request_data = request.get_json()
-    sor= request_data['sourcek']
-    to= request_data['tok']
-    print(sor)
-    cur.execute("select * from booking_bus_admin where Source=%s and Destination= %s",(sor,to))
-    data = cur.fetchall()
+    sor = request_data['sourcek']
+    to = request_data['tok']
     
-   
+    cur.execute("SELECT * FROM booking_bus_admin WHERE Source = %s AND Destination = %s", (sor, to))
+    data = cur.fetchall()
 
-    if(len(data)>0):
+    if len(data) > 0:
         result = []
         for row in data:
-        # Assuming the first column is 'id' and the second column is 'name'
-             result.append({"Source": row[0], "Destintation": row[1],"Bus_Number": row[2],"Price": row[3]})  # Adjust column indexes accordingly
-    
-             return jsonify({"status":200,"msg": "success",f"data":result})
-    
+            # Assuming the columns in the row are: Source, Destination, Bus_Number, Price
+            result.append({"Source": row[0], "Destination": row[1], "Bus_Number": row[2], "Price": row[3]})
+        return jsonify({"status": 200, "msg": "success", "data": result})
     else:
-         return jsonify({"status":500,"msg": "fail",f"data":data})
+        return jsonify({"status": 500, "msg": "fail", "data": data})
 
 if __name__ == "__main__":
     app.run(debug=True)
