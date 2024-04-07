@@ -88,7 +88,6 @@ def addbus():
     return jsonify({"status":200,"msg": "success"})
 # search  bus threw normal user
 @app.route('/search_bus', methods=['POST'])
-@app.route('/search_bus', methods=['POST'])
 def search():
     request_data = request.get_json()
     sor = request_data['sourcek']
@@ -105,6 +104,36 @@ def search():
         return jsonify({"status": 200, "msg": "success", "data": result})
     else:
         return jsonify({"status": 500, "msg": "fail", "data": data})
+
+#check how manay seat is free 
+@app.route('/available_seat', methods=['POST'])
+def seat():
+     request_data = request.get_json()
+     sor = request_data['busk']
+     
+     cur.execute("SELECT * FROM booking_bus_admin WHERE Bus_Number = %s",(sor,))
+     data = cur.fetchall()
+     print(data)
+     if len(data) > 0:
+        result = []
+        for row in data:
+            #add for partition
+         result.append({"Source": row[0], "Destination": row[1], "Bus_Number": row[2], "Price": row[3],"Time":row[4],"total_seat":row[5],"book_seat":(row[6])})
+         return jsonify({"status": 200, "msg": "success", "data": result})
+     else:
+            return jsonify({"status": 500, "msg": "fail", "data": data})
+
+@app.route('/feedback', methods=['post'])
+def fd():
+     request_data = request.get_json()
+     name = request_data['namek']
+     email = request_data['emailk']
+     subject = request_data['subjectk']
+     Message = request_data['messagek']
+     print(name)
+    #  cur.execute("insert into bus_feedback(Name,Email,Subject,Message) Values(%s,%s,%s,%s)",(name,email,subject,Message))
+
+     return jsonify({"status": 200, "msg": "success"})
 
 if __name__ == "__main__":
     app.run(debug=True)
